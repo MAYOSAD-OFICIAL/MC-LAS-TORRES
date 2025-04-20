@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Menú Emocional</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="img/logo-mc-las-torres.png" alt="Logo McDonald's">
+            <h1>MC MENÚ EMOCIONAL</h1>
+            <div class="red-bar"></div>
+        </div>
+    </header>
+
+    <section class="instructions-section">
+        <h2>INSTRUCCIONES</h2>
+		<h3>FRASE DEL DÍA:</h3>
+        <div class="instruction-item">
+            <p>Coge una "patata" al día o cuando creas que lo necesites y lee tu frase del día.</p>
+        </div>
+        <div class="instruction-item">
+            <p>Puedes hacerle una foto, compartirla con tus compañeros y publicarla en nuestro blog.</p>
+        </div>
+        <div class="instruction-item">
+            <p>Después devuélvela a la caja.</p>
+        </div>
+        <div class="instruction-item">
+            <p>Si tienes una frase en mente que creas que alguien pueda necesitar en algún momento, ¡también puedes escribirla y ponerla en la cajita!</p>
+        </div>
+        <h3>CANCIÓN QUE MEJORÓ MI DÍA:</h3>
+        <div class="instruction-item">
+            <p>Publica en nuestro blog la canción que te ha alegrado el día o el turno, ya bien porque te vino a la cabeza o porque se la escuchaste a alguien.</p>
+        </div>
+        <div class="instruction-item">
+            <p>¡También la puedes añadir a la playlist de MC MENÚ EMOCIONAL que tenemos en SPOTIFY!<br>(Más abajo encontrarás el QR para acceder a la playlist)</p>
+        </div>
+    </section>
+
+    <section id="song-blog" class="song-section">
+        <h2>CANCIÓN QUE MEJORÓ MI DÍA</h2>
+        <p><span class="phrase-intro-text">Publica <a href="https://forms.gle/TRjjRWWufbGtpDqL6" target="_blank">aquí</a> tu canción favorita del día</p>
+        <div id="song-entries-container">
+            </div>
+        </section>
+
+    <section class="qr-section">
+        <h2>CLICA EN EL QR</h2>
+		<a href="https://open.spotify.com/playlist/1KRC39DtW82rNZr1txoj7t?si=25eebef8b72942d0&pt=1006a397a804e358e14e3cf7c9be524b" target="_blank">
+			<img src="img/qr-spotify.png" alt="Código QR Spotify">
+		</a>	
+        <p>Y añade tu canción favorita del día a la playlist de Spotify de</p>
+        <p>MC MENÚ EMOCIONAL</p>
+    </section>
+
+	<section class="banner-mc-menu">
+		<img src="img/mc-menu-emocional.png" alt="Banner MC Menú Emocional" class="banner-image">
+	</section>
+
+    <section id="phrase-blog" class="phrase-section">
+        <h2>FRASE QUE ME TOCÓ EL DÍA DE HOY</h2>
+        <p><span class="phrase-intro-text">Publica <a href="https://forms.gle/EZ4uA6S42y3oH5NE6" target="_blank">aquí</a> la frase que te tocó el día de hoy</p>
+        <div id="phrase-entries-container">
+            </div>
+        </section>
+
+    <script src="script.js"></script>
+<script>
+function loadSongs() {
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQqnYMuoIXkXKoWn1wx-8yv0iWSWlpG_A0vWKP-XFy26ppwn3mi97chaCuo2yU2sv3WaZerjx8A2zCG/pub?output=csv';
+    const container = document.getElementById('song-entries-container');
+
+    fetch(sheetUrl)
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.split('\n').slice(1); // Skip header row
+            let html = '';
+            rows.forEach(row => {
+                const columns = row.split(',');
+                if (columns.length >= 5) { // Asegurarse de tener todas las columnas
+                    const cancion = columns[1].trim(); // Columna 2: Nombre de la canción
+                    const artista = columns[2].trim(); // Columna 3: Artista de la canción
+                    const motivo = columns[3].trim(); // Columna 4: ¿Por qué te ayudó esta canción?
+                    const quien = columns[4].trim();   // Columna 5: Soy:
+                    html += `
+                        <div class="blog-entry">
+                            <h4>${cancion} - ${artista}</h4>
+                            <p><strong>¿Por qué?:</strong> ${motivo}</p>
+                            <p><strong>Soy:</strong> ${quien}</p>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+        });
+}
+
+function loadPhrases() {
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS1UB7XlxCmi-qMbcjf3HxR9rzF5VEfeN0Yb0eXj5SpCHL-8rFWZktArFwusKw-9ggT6ceNoMNLZtSR/pub?output=csv';
+    const container = document.getElementById('phrase-entries-container');
+
+    fetch(sheetUrl)
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.split('\n').slice(1); // Skip header row
+            let html = '';
+            rows.forEach(row => {
+                // Simple regex para intentar dividir por comas fuera de las comillas dobles
+                const columns = row.match(/("([^"]*)")|([^,]+)/g).map(s => s.replace(/"/g, '').trim());
+
+                if (columns.length >= 4) {
+                    const frase = columns[1];
+                    const motivoAdicional = columns[2] ? `<p><strong>Algo que añadir:</strong> ${columns[2]}</p>` : '';
+                    const quien = columns[3];
+
+                    console.log(`Fila (regex): ${columns}`);
+                    console.log(`Quién leído (regex): ${quien}`);
+
+                    html += `
+                        <div class="blog-entry">
+                            <h4>${frase}</h4>
+                            ${motivoAdicional}
+                            <p><strong>Soy:</strong> ${quien}</p>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+        });
+}
+
+// Load data when the page loads
+window.onload = function() {
+    loadSongs();
+    loadPhrases();
+};
+</script>
+</body>
+</html>

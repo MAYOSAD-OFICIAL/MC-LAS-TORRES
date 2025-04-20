@@ -1,0 +1,237 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Un fondo gris claro general */
+    color: #333;
+}
+
+.main-header, .main-footer {
+    background-color: #d52b1e; /* Rojo McDonald's */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 30px solid #fff; /* Separación blanca */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container img {
+    max-width: 200px; /* Ajusta el ancho máximo deseado */
+    height: auto;
+    margin-bottom: 0; /* O el margen que desees */
+}
+
+.logo-container h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.red-bar {
+    background-color: #d52b1e;
+    height: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.instructions-section {
+    background-color: #d52b1e;
+    color: #fff;
+    padding: 20px;
+    border-bottom: 30px solid #fff; /* Añadimos un borde inferior blanco de 30 píxeles */
+}
+
+.instructions-section h2, .song-section h2, .phrase-section h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 5px; /* Reducimos el margen inferior */
+    font-weight: 900;
+}
+
+.qr-section h2 {
+    color: #d52b1e; /* Establecemos el color rojo para el h2 dentro de la sección QR */
+    text-align: center; /* Aseguramos que siga centrado */
+    margin-bottom: 5px; /* Mantenemos el margen inferior */
+    font-weight: 900; /* Añadimos un peso de fuente más fuerte */
+}
+
+.instructions-section h3 {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.instruction-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-left: 5px solid #ffc72c; /* Amarillo McDonald's */
+    background-color: rgba(255, 255, 255, 0.1); /* Un fondo ligeramente transparente para los items */
+}
+
+.song-section {
+    background-color: #ffc72c; /* Amarillo McDonald's para la sección de canciones */
+    padding: 5px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.phrase-section {
+    background-color: #d52b1e;
+    padding: 5px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.phrase-intro-text {
+    color: #fff;
+    font-weight: bold; /* Si quieres mantener la negrita */
+    margin-bottom: 15px; /* Si quieres mantener el margen inferior */
+}
+
+.qr-section {
+    background-color: #ffc72c; /* Mantenemos el amarillo para la sección del QR */
+    padding: 5px;
+    text-align: center;
+    margin-top: 0px;
+    border-bottom: 30px solid #fff; /* Esta línea es la que vamos a eliminar */
+}
+
+.song-section p p {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.song-section p {
+    margin-block-start: 0; /* Anula el margen superior predeterminado */
+    margin-block-end: 0.5em; /* Reduce el margen inferior predeterminado (puedes ajustar este valor) */
+}
+
+.phrase-section p {
+    margin-block-start: 0; /* Anula el margen superior predeterminado */
+    margin-block-end: 0.5em; /* Reduce el margen inferior predeterminado (puedes ajustar este valor) */
+}
+
+.banner-mc-menu .banner-image {
+    max-width: 25%; /* O el ancho máximo que prefieras (ej: 800px) */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Para centrar la imagen horizontalmente si lo deseas */
+}
+
+.banner-mc-menu {
+    background-color: #fff; /* Establecemos el color de fondo a blanco */
+    padding-top: 10px; /* Opcional: añade un poco de espacio alrededor de la imagen si lo deseas */
+    padding-bottom: 35px;
+    text-align: center; /* Opcional: centra la imagen horizontalmente dentro de la sección */
+}
+
+.song-entry, .phrase-entry {
+    background-color: #fff;
+    color: #333;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.song-entry strong, .phrase-entry strong {
+    font-weight: bold;
+}
+
+.phrase-section .blog-entry {
+    color: #333;
+}
+
+.phrase-section .blog-entry strong {
+    font-weight: bold;
+    color: #d52b1e;
+}
+
+.qr-section img {
+    max-width: 200px; /* Ajusta el tamaño del código QR */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.qr-section p {
+    color: #d52b1e; /* Texto rojo en la sección QR */
+    font-weight: bold;
+    margin-top: 0.2em; /* Reducimos el margen superior predeterminado */
+    margin-bottom: 0.2em; /* Reducimos el margen inferior predeterminado */
+}
+
+/* Estilos adicionales para alinear elementos y mejorar la apariencia general */
+.logo-container .red-bar {
+    margin-top: 15px;
+}
+
+.instruction-item p {
+    margin: 5px 0;
+}
+
+.blog-entry {
+    background-color: #fff;
+    color: #333;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 15px; /* Añadimos bordes redondeados de 10 píxeles */
+    text-align: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-entry h4 {
+    margin-top: 0;
+    margin-bottom: 2px; /* Reducimos el margen inferior */
+    color: #d52b1e; /* Rojo McDonald's para el título */
+}
+
+.blog-entry strong {
+    font-weight: bold;
+    color: #d52b1e; /* Añadimos el color rojo */
+}
+
+.blog-entry p {
+    margin-top: 0.3em; /* Ajusta este valor (en em) para el espacio superior */
+    margin-bottom: 0.3em; /* Ajusta este valor (en em) para el espacio inferior */
+}
+
+.song-section p a {
+    color: inherit; /* Hereda el color del texto base */
+    text-decoration: underline; /* Añadimos el subrayado estático */
+}
+
+.song-section p a:hover {
+    color: #d52b1e; /* Cambia el color al rojo al pasar el ratón */
+    text-decoration: underline; /* Mantenemos el subrayado al pasar el ratón */
+}
+
+.phrase-section p a {
+    color: inherit; /* Hereda el color del texto base */
+    text-decoration: underline; /* Añadimos el subrayado estático */
+}
+
+.phrase-section p a:hover {
+    color: #ffc72c; /* Cambia el color al rojo al pasar el ratón */
+    text-decoration: underline; /* Mantenemos el subrayado al pasar el ratón */
+}
+
+/* Responsive design básico (ajusta según necesites) */
+@media (max-width: 768px) {
+    .logo-container h1 {
+        font-size: 1.5em;
+    }
+    .instruction-item {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .song-entry, .phrase-entry {
+        padding: 10px;
+    }
+}
